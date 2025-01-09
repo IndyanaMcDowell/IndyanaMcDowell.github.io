@@ -51,17 +51,19 @@ $(function () {
     // example usage: createCollectable(type, x, y, gravity, bounce)
 
     createCollectable("database", 500, 250);
-
+    createCollectable("database", 500, 500);
+    createCollectable("database", 500, 690);
     // TODO 3
     // Create cannons
     // You must decide the wall you want the cannon on, the position on the wall, and the time between shots in milliseconds
     // Your wall choices are: 'top' 'left' 'right' and 'bottom'
     // example usage: createCannon(side, position, delay, width, height)
 
-    createCannon("right", 199, 2000);
-    createCannon("left", 233, 1500);
-    createCannon("right", 500, 1000);
-    createCannon("left", 535, 500);
+    createCannon("right", 199, 3000);
+    createCannon("left", 233, 2000);
+    createCannon("right", 500, 1750);
+    createCannon("left", 535, 1500);
+    createCannon("right", 789, 1000);
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
     /////////////////////////////////////////////////
