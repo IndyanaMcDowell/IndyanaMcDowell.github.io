@@ -73,10 +73,11 @@
 
         // TODO 2 - Variable declarations
         var positionX = 0;
-        var positionY = 0;
-        var speedY = 5;
+        var positionY = 25;
+        var speedY = 10;
         var points = 0;
         var speed = 10;
+        var boardHeight = jQuery(window).height();
         /* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -84,13 +85,20 @@
 			*/
         function update() {
           // Increase positionX by 10 here
+          positionY = positionY + speedY;
           positionX = positionX + speed;
-          moveBoxTo(positionX);
+          moveBoxTo(positionX, positionY);
           if (positionX > boardWidth) {
             speed = -speed;
           }
           if (positionX < 0) {
             speed = speed * -1;
+          }
+          if (positionY > boardHeight) {
+            speedY = -speedY;
+          }
+          if (positionY < 0) {
+            speedY = speedY * -1;
           }
         }
 
@@ -107,6 +115,11 @@
             speed = speed + 3;
           } else if (speed < 0) {
             speed = speed - 3;
+          }
+          if (speedY > 0) {
+            speedY = speedY + 3;
+          } else if (speedY < 0) {
+            speedY = speedY - 3;
           }
           // Increase Points
           points = points + 1;
