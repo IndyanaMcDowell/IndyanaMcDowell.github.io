@@ -29,8 +29,8 @@ var background = function (window) {
         // ANIMATION VARIABLES HERE //////////////////////////////////////
         //////////////////////////////////////////////////////////////////
         // TODO (several):
-      
-      
+      var tree;
+      var buildings = []
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
         function render() {
@@ -58,10 +58,22 @@ var background = function (window) {
             }
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            for (var i = 0; i < 5; i++) {
+                var buildingColors = ["purple", "yellow", "orange", "pink", "black"];
+                var buildingHeight = 300 * Math.random(); // assign 300 to the buildingHeight variable
+                var building = draw.rect(75, buildingHeight, buildingColors[i], "Black", 1); // draws rectangle with 75 , buildHeight is height, lightgrey is the color, black is the outline, and 1 is the outline width
+                building.x = 700 * i; // multiply 200 by current i value and store it as the x pos for the building
+                building.y = groundY - buildingHeight; // take the groundy, subtacts the building height
+                background.addChild(building); // add building to background container
+                buildings.push(building); // add the building to the buildings array for further manipulation
+              }
+
             
             // TODO 3: Part 1 - Add a tree
-            
+            tree = draw.bitmap("img/tree.png"); // creates a bitmap for the tree image and stores it in the variable tree
+            tree.x = 300; // place the tree off-screen to the right
+            tree.y = 250; // place the tree above the ground (adjusted for tree height)
+            background.addChild(tree); // adds to background
             
         } // end of render function - DO NOT DELETE
         
@@ -75,10 +87,19 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 3: Part 2 - Move the tree!
-            
+            tree.x = tree.x - 1;
+            if (tree.x < -200) {
+            tree.x = canvasWidth;
+        }
             
             // TODO 4: Part 2 - Parallax
-            
+            for (var i = 0; i < buildings.length; i++) {
+                var building = buildings[i]; // the individual index of the buildings array stored in variable building
+                building.x -= 1; // subtracts 1 from the building's x pos; animate to the left
+                if (building.x < -200) { //checks if the x pos of the building is less than -200
+                    building.x = canvasWidth; // if true, resets buildings x to the right side of the canvas
+                    }
+                }
 
         } // end of update function - DO NOT DELETE
         
