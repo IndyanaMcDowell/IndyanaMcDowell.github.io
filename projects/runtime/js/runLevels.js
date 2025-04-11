@@ -18,15 +18,21 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-    var hitZoneSize = 25;
-    var damageFromObstacle = 10;
-    var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-    sawBladeHitZone.x = 400;
-    sawBladeHitZone.y = 375;
-    game.addGameItem(sawBladeHitZone);
-    var obstacleImage = draw.bitmap("img/sawblade.png");
-    sawBladeHitZone.addChild(obstacleImage);
-
+    function createSawBlade(x, y){
+      var hitZoneSize = 25; //define the size of the hitzone and assign to a variable
+      var damageFromObstacle = 10; //defines the amount of damage obstacle causes and assigns to a variable
+      var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle hitzone using the size and damage as paramaters 
+      sawBladeHitZone.x = x; //sets the x coordinate of the sawblade
+      sawBladeHitZone.y = y; // sets the y coordinate of the sawblade
+      game.addGameItem(sawBladeHitZone); // adds the sawblade hitzone to the game
+      var obstacleImage = draw.bitmap("img/sawblade.png"); // draw the image bitmap and store it in obstacleImage
+      sawBladeHitZone.addChild(obstacleImage); //attaches the image to the sawblade hitzone
+      obstacleImage.x = -25; //position the image on the hitzone's x value by moving it left 25 pixels
+      obstacleImage.y = -25; //position the image on the hitzone's y value by moving it up 25 pixels
+    }
+    createSawBlade(400, groundY - 50)
+    createSawBlade(800, groundY - 50)
+    createSawBlade(1000, groundY - 50)
     function startLevel() {
       // TODO 13 goes below here
 
