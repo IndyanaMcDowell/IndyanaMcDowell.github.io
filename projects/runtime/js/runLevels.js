@@ -31,8 +31,40 @@ var runLevels = function (window) {
       obstacleImage.y = -25; //position the image on the hitzone's y value by moving it up 25 pixels
     }
     createSawBlade(400, groundY - 50)
-    createSawBlade(800, groundY - 50)
-    createSawBlade(1000, groundY - 50)
+    createSawBlade(800, groundY - 25)
+    createSawBlade(1000, groundY - 75)
+
+
+    function createEnemy(x, y) {
+      var enemy = game.createGameItem("enemy", 25);
+      var redSquare = draw.rect(50, 50, "red");
+      redSquare.x = -25;
+      redSquare.y = -25;
+      enemy.addChild(redSquare);
+      enemy.x = x;
+      enemy.y = y;
+      game.addGameItem(enemy);
+      enemy.velocityX = -1;
+      enemy.rotationalVelocity = 0.5;
+      enemy.onPlayerCollision = function () {
+        game.changeIntegrity(-20)
+      };
+      enemy.onProjectileCollision = function () {
+        game.increaseScore(100);
+        enemy.fadeOut();
+      }
+    }
+    createEnemy(400, groundY - 10);
+    createEnemy(800, groundY - 10);
+    createEnemy(1200, groundY - 10);
+
+    function createReward() {
+
+    }
+
+    function createMarker() {
+      
+    }
     function startLevel() {
       // TODO 13 goes below here
 
