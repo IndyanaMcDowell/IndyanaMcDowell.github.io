@@ -44,7 +44,7 @@ var runLevels = function (window) {
       enemy.x = x;
       enemy.y = y;
       game.addGameItem(enemy);
-      enemy.velocityX = -1;
+      enemy.velocityX -= 1;
       enemy.rotationalVelocity = 0.5;
       enemy.onPlayerCollision = function () {
         game.changeIntegrity(-20)
@@ -58,9 +58,31 @@ var runLevels = function (window) {
     createEnemy(800, groundY - 10);
     createEnemy(1200, groundY - 10);
 
-    function createReward() {
-
+    function createReward(x, y, health, image, scale, offsetX, offsetY) {
+      var reward = game.createGameItem("reward", 25); // creates reward game item and adds it to game and stores it in the variable reward
+      var purpleSquare = draw.bitmap(image); // creates a red square and stores it in the variable red square
+      purpleSquare.x = offsetX; // offsets the image from the hitzone by -25 pixels
+      purpleSquare.y = offsetY; // offsets the image from the hitzone by -25 pixels
+      reward.addChild(purpleSquare); //add the red square as a child to our reward variable
+      reward.x = x; // x pos of reward
+      reward.y = y; // y pos of reward
+      game.addGameItem(reward); // adds reward to game  
+      reward.velocityX -= 3; // makes the reward move
+      // reward.rotationalVelocity = 1; // rotates reward
+      purpleSquare.scaleX = scale; // scales enemy X
+      purpleSquare.scaleY = scale; // sclaes enemy Y
+     
+      reward.onPlayerCollision = function () {
+        game.changeIntegrity(health) // adds a certain amount of health to hallebots HUD
+        reward.fadeOut();
+      };
     }
+    
+    createReward(700, groundY-103, 50); // calls a reward
+    createReward(1100, groundY-103, 15); // calls a reward
+    createReward(1500, groundY-103, 5); // calls a reward
+    
+
 
     function createMarker() {
       
