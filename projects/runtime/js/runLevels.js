@@ -46,7 +46,7 @@ var runLevels = function (window) {
       enemy.x = x; // x pos of enemy
       enemy.y = y; // y pos of enemy
       game.addGameItem(enemy); // add enemy to the game
-      enemy.velocityX -= 1; // controlling how fast the enemy moves on the x axis
+      enemy.velocityX -= 5; // controlling how fast the enemy moves on the x axis
       enemy.rotationalVelocity = 0.5; // sets the rotational velocity of the enemy
       enemy.onPlayerCollision = function () {
         game.changeIntegrity(-20); // subtracts health from halleBot's hud
@@ -71,8 +71,7 @@ var runLevels = function (window) {
       game.addGameItem(reward); // adds reward to game
       reward.velocityX -= 3; // makes the reward move
       // reward.rotationalVelocity = 1; // rotates reward
-      purpleSquare.scaleX = scale; // scales enemy X
-      purpleSquare.scaleY = scale; // sclaes enemy Y
+
 
       reward.onPlayerCollision = function () {
         game.increaseScore(20);
@@ -96,10 +95,10 @@ var runLevels = function (window) {
       game.addGameItem(reward); // adds reward to game
       reward.velocityX -= speed; // makes the reward move
       reward.rotationalVelocity = 1; // rotates reward
-      yellowSquare.scaleX = scale; // scales enemy X
-      yellowSquare.scaleY = scale; // sclaes enemy Y
+
       reward.onPlayerCollision = function () {
         reward.shrink();
+        startLevel();
       };
     }
 
