@@ -105,7 +105,7 @@ var runLevels = function (window) {
     createLevel(1500, groundY - 50, 3);
     function startLevel() {
       // TODO 13 goes below here
-
+      var level = levelDate[robot]
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE
       //////////////////////////////////////////////

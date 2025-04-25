@@ -10,6 +10,7 @@ var makeLevelData = function (window) {
 
     // TODO 12: change the below data
     var levelData = [
+      
       {
         name: "Robot Romp",
         number: 1,
@@ -18,7 +19,9 @@ var makeLevelData = function (window) {
           { type: "sawblade", x: 400, y: groundY },
           { type: "sawblade", x: 600, y: groundY },
           { type: "sawblade", x: 900, y: groundY },
-          { type: "reward", x: 750, y: groundY - 25}
+          { type: "enemy", x: 500, y: groundY - 30 },
+          { type: "reward", x: 750, y: groundY - 25},
+          { type: "reward", x: 450, y: groundY - 25}
         ],
       },
       {
